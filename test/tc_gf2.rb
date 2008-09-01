@@ -13,6 +13,10 @@ class GF2Test < Test::Unit::TestCase
     assert_equal(3, @field.add(0x1, 0x2))
   end
 
+  def test_gf2_subtraction_success
+    assert_equal(1, @field.subtract(0x3, 0x2))
+  end
+
 end
 
 

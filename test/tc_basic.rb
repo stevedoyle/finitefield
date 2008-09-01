@@ -14,7 +14,7 @@ class BasicTest < Test::Unit::TestCase
   end
 
   def test_degree
-    assert_equal(8, @field.degree)
+    assert_equal(8, @field.degree(0x11D))
   end
   
 end

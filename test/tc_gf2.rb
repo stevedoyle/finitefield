@@ -6,7 +6,7 @@ require 'finitefield'
 class GF2Test < Test::Unit::TestCase
 
   def setup
-    @field = FiniteField.new(0x11D)
+    @field = FiniteField.new(8, 0x11D)
   end
   
   def test_gf2_addition_success

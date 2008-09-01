@@ -6,7 +6,7 @@ require 'finitefield'
 class BasicTest < Test::Unit::TestCase
 
   def setup
-    @field = FiniteField.new(0x11D)
+    @field = FiniteField.new(8, 0x11D)
   end
   
   def test_get_polynomial

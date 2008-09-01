@@ -3,9 +3,12 @@
 
 class FiniteField
   attr_reader :polynomial
+  attr_reader :p
   
-  def initialize(polynomial)
+  # Create a field of GF(2^n) using the specified generator polynomial
+  def initialize(n, polynomial)
     @polynomial = polynomial
+    @n = n
   end
   
   # Adds two finite field elements and returns the result.
@@ -19,6 +22,22 @@ class FiniteField
   # the add method.
   def subtract(lhs, rhs)
     add(lhs, rhs)
+  end
+  
+  # Multiplies two field elements, modulo the generator polynomial
+  # and returns the result.
+  def multiply(lhs, rhs)
+  end
+  
+  # Computes the multiplicative inverse of the element and returns 
+  # the result.
+  def inverse(element)
+  end
+  
+  # Division of two field elements (rhs/lhs). This is the same as
+  # rhs * lhs^-1 i.e. multiply(rhs, inverse(lhs))
+  def divide(rhs, lhs)
+    multiply(rhs, inverse(lhs))
   end
 
   # Find the degree of the polynomial representing the input field

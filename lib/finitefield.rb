@@ -26,12 +26,51 @@ class FiniteField
   
   # Multiplies two field elements, modulo the generator polynomial
   # and returns the result.
-  def multiply(lhs, rhs)
+  def multiply(a, b)
+    m = multiplyWithoutReducing(a, b)
+    reduce(m)
+  end
+  
+  # Multiply two field exlements without modulo with the generator 
+  # polynomial.
+  def multiplyWithoutReducing(a, b)
+    result = 0
+    mask = 1
+    i = 0
+    
+    while i <= @n
+      if mask & b != 0
+        result ^= a
+      end
+      a <<= 1
+      mask <<= 1
+      i += 1
+    end
+    
+    return result
+  end
+  
+  # Reduce the input value by modulo with the generator polynomial
+  def reduce(a)
+    result = 0
+    i = degree(a)
+    mask = 1 << i
+    
+    while i >= @n
+      if mask & a != 0
+        result ^=  1 << (i - @n)
+        a = subtract(a, @polynomial << (i - @n))
+      end
+      i -= 1
+      mask >>= 1
+    end
+    return a
   end
   
   # Computes the multiplicative inverse of the element and returns 
   # the result.
-  def inverse(element)
+  def inverse(a)
+    extendedEuclid(1, a, @polynomial, degree(a), @n)
   end
   
   # Division of two field elements (rhs/lhs). This is the same as
@@ -43,7 +82,7 @@ class FiniteField
   # Find the degree of the polynomial representing the input field
   # element v.  This takes O(degree(v)) operations. 
   def degree(v)
-    if v
+    if v != 0
       result = -1
       while v != 0
         v >>= 1

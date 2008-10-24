@@ -70,13 +70,34 @@ class FiniteField
   # Computes the multiplicative inverse of the element and returns 
   # the result.
   def inverse(a)
-    extendedEuclid(1, a, @polynomial, degree(a), @n)
+    remainder = [0,0,0]
+    quotient = [0,0,0]
+    auxillary = [0,0,0]
+    
+    remainder[1] = @polynomial
+    remainder[2] = a
+    auxillary[1] = 0
+    auxillary[2] = 1
+    i = 2
+    
+#    puts "#{remainder[i].to_s(base=16)} #{quotient[i].to_s(base=16)} #{auxillary[i].to_s(base=16)}"
+
+    while(remainder[i] > 1)
+      i += 1
+      result = binary_div(remainder[i-2], remainder[i-1])
+      remainder[i] = result[1]
+      quotient[i] = result[0]
+      auxillary[i] = binary_mul(quotient[i], auxillary[i-1]) ^ auxillary[i-2]
+#      puts "#{remainder[i].to_s(base=16)} #{quotient[i].to_s(base=16)} #{auxillary[i].to_s(base=16)}"
+    end
+    
+    return auxillary[i]
   end
   
   # Division of two field elements (rhs/lhs). This is the same as
   # rhs * lhs^-1 i.e. multiply(rhs, inverse(lhs))
-  def divide(rhs, lhs)
-    multiply(rhs, inverse(lhs))
+  def divide(lhs, rhs)
+    multiply(lhs, inverse(rhs))
   end
 
   # Find the degree of the polynomial representing the input field
@@ -93,4 +114,34 @@ class FiniteField
     return 0
   end
   
+  # Binary multiplication. Or more explicitly - multiplication over a binary field
+  def binary_mul(lhs, rhs)
+    result = 0
+    a = [degree(lhs), degree(rhs)].max
+    0.upto(a) do |i|
+      if lhs & (1 << i) != 0:
+        result ^= rhs
+      end
+      rhs <<= 1
+    end
+    return result
+  end
+
+  # Binary division. Or more explicitly - division over a binary field
+  def binary_div(lhs, rhs)
+    q = 0
+    r = lhs
+    p1 = degree(lhs)
+    p2 = degree(rhs)
+    
+    (p1 - p2 + 1).downto(0) do |i|
+      q <<= 1
+      if r & (1 << (p2+i)) != 0
+        q |= 1
+        r ^= (rhs << i)
+      end
+    end
+    return [q, r]
+  end
+
 end

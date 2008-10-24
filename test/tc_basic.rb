@@ -17,6 +17,13 @@ class BasicTest < Test::Unit::TestCase
     assert_equal(8, @field.degree(0x11D))
   end
   
+  def test_binary_mul
+    assert_equal(0xa95, @field.binary_mul(0x53, 0x23))
+  end
+  
+  def test_binary_div
+    assert_equal([5, 4], @field.binary_div(0x11b, 0x53))
+  end
 end
 
 

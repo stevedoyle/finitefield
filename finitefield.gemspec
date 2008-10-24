@@ -7,5 +7,6 @@ Gem::Specification.new do |s|
    s.summary = %q{Finite Field implementation in Ruby.}
    s.homepage = %q{http://finitefield.rubyforge.org/}
    s.description = %q{Finite Field implementation in Ruby.}
-   s.files = [ "README.txt", "lib/finitefield.rb"]
+   s.files = [ "README.txt", "LICENSE.txt", "lib/finitefield.rb", 
+     "test/ts_finitefield.rb", "test/tc_basic.rb", "test/tc_gf2.rb"]
 end

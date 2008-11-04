@@ -80,15 +80,12 @@ class FiniteField
     auxillary[2] = 1
     i = 2
     
-#    puts "#{remainder[i].to_s(base=16)} #{quotient[i].to_s(base=16)} #{auxillary[i].to_s(base=16)}"
-
     while(remainder[i] > 1)
       i += 1
       result = binary_div(remainder[i-2], remainder[i-1])
       remainder[i] = result[1]
       quotient[i] = result[0]
       auxillary[i] = binary_mul(quotient[i], auxillary[i-1]) ^ auxillary[i-2]
-#      puts "#{remainder[i].to_s(base=16)} #{quotient[i].to_s(base=16)} #{auxillary[i].to_s(base=16)}"
     end
     
     return auxillary[i]
@@ -145,3 +142,4 @@ class FiniteField
   end
 
 end
+

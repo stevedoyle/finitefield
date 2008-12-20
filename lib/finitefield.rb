@@ -1,9 +1,38 @@
-
-# Finite fields of characteristic 2
+# = finitefield.rb - Finite Field Arithmetic
+#
+# Copyright (C) 2008  Stephen Doyle
+#
+# == Features
+# finitefield.rb currently supports arithmetic in finite fields of characteristic 2.
+#
+# The following operations are supported:
+# * Addition
+# * Subtraction
+# * Multiplication
+# * Division
+# * Inverse
+# * Reduction
+# * Binary multiplication
+# * Binary division
+#
+# == Example
+#
+#  # Create a field
+#  field = FiniteField.new(8, 0x169)  # <== F(2^8) with polynomial: 0x169
+#  # Addition
+#  result = field.add(7, 8)
+#  # Subtraction
+#  result = field.subtract(8, 5)
+#  # Multiplication
+#  result = field.multiply(9, 87)
+#  # Division
+#  result = field.divide(87, 9)   # <==  result = 87/9
+#  # Inverse
+#  result = field.inverse(31)
+#
 
 class FiniteField
   attr_reader :polynomial
-  attr_reader :p
   
   # Create a field of GF(2^n) using the specified generator polynomial
   def initialize(n, polynomial)
@@ -50,7 +79,7 @@ class FiniteField
     return result
   end
   
-  # Reduce the input value by modulo with the generator polynomial
+  # Reduce the input value by modulo with the generator polynomial, i.e. result = a % polynomial.
   def reduce(a)
     result = 0
     i = degree(a)
@@ -91,14 +120,16 @@ class FiniteField
     return auxillary[i]
   end
   
-  # Division of two field elements (rhs/lhs). This is the same as
-  # rhs * lhs^-1 i.e. multiply(rhs, inverse(lhs))
+  # Division of two field elements (lhs/rhs). This is the same as
+  # lhs * rhs^-1 i.e. multiply(lhs, inverse(rhs))
   def divide(lhs, rhs)
     multiply(lhs, inverse(rhs))
   end
 
   # Find the degree of the polynomial representing the input field
   # element v.  This takes O(degree(v)) operations. 
+  #
+  # Example: degree(0x141) = 8  ==> 0x141 = x^8 + x^6 + 1
   def degree(v)
     if v != 0
       result = -1
@@ -111,7 +142,7 @@ class FiniteField
     return 0
   end
   
-  # Binary multiplication. Or more explicitly - multiplication over a binary field
+  # Binary multiplication. Or more explicitly - multiplication over a binary field.
   def binary_mul(lhs, rhs)
     result = 0
     a = [degree(lhs), degree(rhs)].max
@@ -124,7 +155,7 @@ class FiniteField
     return result
   end
 
-  # Binary division. Or more explicitly - division over a binary field
+  # Binary division. Or more explicitly - division over a binary field.
   def binary_div(lhs, rhs)
     q = 0
     r = lhs

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: finitefield.rb</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>finitefield.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>lib/finitefield.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Sat Dec 20 00:13:58 +0000 2008</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>finitefield.rb - Finite Field Arithmetic</h1>
+<p>
+Copyright (C) 2008 Stephen Doyle
+</p>
+<h2>Features</h2>
+<p>
+finitefield.rb currently supports arithmetic in finite fields of
+characteristic 2.
+</p>
+<p>
+The following operations are supported:
+</p>
+<ul>
+<li>Addition
+
+</li>
+<li>Subtraction
+
+</li>
+<li>Multiplication
+
+</li>
+<li>Division
+
+</li>
+<li>Inverse
+
+</li>
+<li>Reduction
+
+</li>
+<li>Binary multiplication
+
+</li>
+<li>Binary division
+
+</li>
+</ul>
+<h2>Example</h2>
+<pre>
+ # Create a field
+ field = FiniteField.new(8, 0x169)  # &lt;== F(2^8) with polynomial: 0x169
+ # Addition
+ result = field.add(7, 8)
+ # Subtraction
+ result = field.subtract(8, 5)
+ # Multiplication
+ result = field.multiply(9, 87)
+ # Division
+ result = field.divide(87, 9)   # &lt;==  result = 87/9
+ # Inverse
+ result = field.inverse(31)
+</pre>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

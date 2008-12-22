@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>getLogTable (examples/logTables.rb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File examples/logTables.rb, line 38</span>
+<span class="ruby-keyword kw">def</span> <span class="ruby-identifier">getLogTable</span>(<span class="ruby-identifier">poly</span>, <span class="ruby-identifier">generator</span>)
+  <span class="ruby-comment cmt"># The log table is most easily generated from the inverse log table.</span>
+  <span class="ruby-comment cmt"># Note that the last element in the inverse log table is invalid and so</span>
+  <span class="ruby-comment cmt"># should be discarded to avoid introducing errors into the log table</span>
+  <span class="ruby-comment cmt"># generation.</span>
+  <span class="ruby-identifier">ilogTable</span> = <span class="ruby-identifier">getILogTable</span>(<span class="ruby-identifier">poly</span>, <span class="ruby-identifier">generator</span>)[<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-value">-1</span>]
+  <span class="ruby-identifier">tmp</span> = {}
+  <span class="ruby-identifier">ilogTable</span>.<span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">value</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span> <span class="ruby-identifier">tmp</span>[<span class="ruby-identifier">value</span>] = <span class="ruby-identifier">index</span> }
+  <span class="ruby-identifier">logTable</span> = [<span class="ruby-value">0</span>] <span class="ruby-operator">+</span> <span class="ruby-identifier">tmp</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>[<span class="ruby-value">1</span>]}
+  <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">logTable</span>
+<span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

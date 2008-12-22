@@ -5,22 +5,15 @@
 
 <html>
 <head>
-  <title>binary_mul (FiniteField)</title>
+  <title>new (FiniteField)</title>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
   <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
 </head>
 <body class="standalone-code">
-  <pre><span class="ruby-comment cmt"># File lib/finitefield.rb, line 146</span>
-  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">binary_mul</span>(<span class="ruby-identifier">lhs</span>, <span class="ruby-identifier">rhs</span>)
-    <span class="ruby-identifier">result</span> = <span class="ruby-value">0</span>
-    <span class="ruby-identifier">a</span> = [<span class="ruby-identifier">degree</span>(<span class="ruby-identifier">lhs</span>), <span class="ruby-identifier">degree</span>(<span class="ruby-identifier">rhs</span>)].<span class="ruby-identifier">max</span>
-    <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">a</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
-      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">lhs</span> <span class="ruby-operator">&amp;</span> (<span class="ruby-value">1</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">i</span>) <span class="ruby-operator">!=</span> <span class="ruby-value">0</span><span class="ruby-operator">:</span>
-        <span class="ruby-identifier">result</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">rhs</span>
-      <span class="ruby-keyword kw">end</span>
-      <span class="ruby-identifier">rhs</span> <span class="ruby-operator">&lt;&lt;=</span> <span class="ruby-value">1</span>
-    <span class="ruby-keyword kw">end</span>
-    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">result</span>
+  <pre><span class="ruby-comment cmt"># File lib/finitefield.rb, line 38</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">n</span>, <span class="ruby-identifier">polynomial</span>)
+    <span class="ruby-ivar">@polynomial</span> = <span class="ruby-identifier">polynomial</span>
+    <span class="ruby-ivar">@n</span> = <span class="ruby-identifier">n</span>
   <span class="ruby-keyword kw">end</span></pre>
 </body>
 </html>

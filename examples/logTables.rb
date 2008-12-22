@@ -1,6 +1,6 @@
 $:.unshift File.join(File.dirname(__FILE__), "..", "lib")
 
-# = fieldElements.rb - Generate the anti-log and log tables for a finite field.
+# = logTables.rb - Generate the anti-log and log tables for a finite field.
 #
 # Copyright (C) 2008  Stephen Doyle
 #
@@ -19,16 +19,7 @@ $:.unshift File.join(File.dirname(__FILE__), "..", "lib")
 #
 
 require 'finitefield'
-
-# Utility method to print a nicely formatted 16x16 table of hex values
-def printTable(table)
-  0.upto(255) do |i|
-    printf("%02x ", table[i])
-    if i!=0 and i%16==15
-      puts ''
-    end
-  end
-end
+require 'exampleUtils'
 
 # Compute the inverse or anti log table for a given field polynomial and generator.
 # Note that the last value of the ilogTable is invalid and present in this example

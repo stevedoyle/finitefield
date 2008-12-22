@@ -10,6 +10,7 @@ fields of the form 2^n.
 
 Examples illustrating how to use the field are given in the examples directory.
 Currently the following examples are provided:
-* fieldTables.rb:
+* logTables.rb:
     - log and antilog table generation given a field polynomial and generator.
-
+* raid6.rb:
+    - RAID6 Q block generation using finite fields.

@@ -147,7 +147,7 @@ class FiniteField
     result = 0
     a = [degree(lhs), degree(rhs)].max
     0.upto(a) do |i|
-      if lhs & (1 << i) != 0:
+      if lhs & (1 << i) != 0
         result ^= rhs
       end
       rhs <<= 1

@@ -6,7 +6,7 @@ require "date"
 
 html_dir = 'doc/html'
 PROJECT = 'finitefield'
-PROJECT_VERSION = "0.1.0"
+PROJECT_VERSION = "0.1.1"
 
 rubyforge_user = 'stephendoyle75'
 rubyforge_project = PROJECT

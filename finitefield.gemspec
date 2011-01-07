@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.authors = ["Stephen Doyle"]
   s.has_rdoc = true
   s.summary = %q{Finite Field implementation in Ruby.}
-  s.homepage = %q{http://finitefield.rubyforge.org/}
+  s.homepage = %q{https://github.com/stevedoyle/finitefield}
   s.description = %q{Finite Field implementation in Ruby.}
   s.files = [ "README.txt", "LICENSE.txt", "lib/finitefield.rb", 
     "test/ts_finitefield.rb", "test/tc_basic.rb", "test/tc_gf2.rb"] +

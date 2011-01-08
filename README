@@ -1,5 +1,5 @@
-Introduction
-------------
+== Introduction
+
 The finitefield library is a utility library that provides support for 
 performing operations on elements in a finite field. Basic operations 
 such as multiplication, division, inverse, addition and subtraction are 
